@@ -385,7 +385,7 @@ export default function Home() {
   const workflowSteps = [
     { step: 1, title: 'Search Videos', description: 'YouTube API scan', icon: SearchIcon },
     { step: 2, title: 'Fetch Captions', description: 'Extract transcripts', icon: FileIcon },
-    { step: 3, title: 'Whisper AI', description: 'Audio analysis', icon: MicIcon },
+    { step: 3, title: 'Whisper AI', description: 'Coming soon', icon: MicIcon },
     { step: 4, title: 'Detect Fraud', description: 'AI signal detection', icon: AlertIcon },
     { step: 5, title: 'Export Report', description: 'Generate CSV', icon: DownloadIcon },
   ]
@@ -457,7 +457,9 @@ export default function Home() {
         }
       }
       
-      // Step 3: Whisper AI (placeholder - structure ready)
+        // Step 3: Whisper AI (future implementation - structure prepared)
+        // When OPENAI_API_KEY is added in the future, this step will use
+        // Whisper AI for audio transcription when YouTube captions are unavailable
       setScanStep(2)
       await new Promise(resolve => setTimeout(resolve, 500))
       
@@ -610,7 +612,7 @@ export default function Home() {
                 </div>
                 <p className="text-xs text-muted-foreground">
                   API keys are securely stored as environment variables on the server. 
-                  Add YOUTUBE_API_KEY and OPENAI_API_KEY in your Vercel project settings.
+                  Add YOUTUBE_API_KEY in your Vercel project settings to enable YouTube search.
                 </p>
               </div>
               
@@ -621,7 +623,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
                   <span className="text-sm text-muted-foreground">OPENAI_API_KEY</span>
-                  <span className="text-xs px-2 py-1 bg-secondary text-muted-foreground rounded">Optional</span>
+                  <span className="text-xs px-2 py-1 bg-secondary text-muted-foreground rounded">Future (Whisper)</span>
                 </div>
               </div>
             </div>
@@ -847,6 +849,7 @@ export default function Home() {
                                                         ▼
 ┌─────────────────┐    ┌──────────────────┐    ┌────────────────────┐
 │  CSV/XLSX       │◀───│  Fraud Signal    │◀───│  Whisper AI        │
+│  Export         │    │  Detection       │    │  (Future)          │
 │  Export         │    │  Detection       │    │  Audio Analysis    │
 └─────────────────┘    └──────────────────┘    └────────────────────┘`}
             </pre>
