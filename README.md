@@ -1,17 +1,10 @@
+# YouTube Fraud Monitoring Backend
 
-# YouTube Fraud Monitoring System
+## Install
+pip install -r requirements.txt
 
-## Features
+## Run
+uvicorn main:app --reload
 
-- YouTube Video Monitoring
-- YouTube Shorts Detection
-- XLSX Export
-- Fraud Keyword Monitoring
-- Next.js + Tailwind CSS
-- Vercel Ready
-
-## Setup
-
-1. npm install
-2. Add YOUTUBE_API_KEY in Vercel
-3. npm run dev
+## Open
+http://127.0.0.1:8000/docs
