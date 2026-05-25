@@ -14,32 +14,40 @@ background:#020617;
 color:white;
 font-family:Arial,sans-serif;
 }
+
 .glass{
 background:linear-gradient(135deg,#0f172a,#111827);
 border:1px solid rgba(59,130,246,0.2);
 backdrop-filter:blur(12px);
 }
+
 .pipeline-card{
 transition:all .4s ease;
 }
+
 .pipeline-waiting{
 background:rgba(30,41,59,.7);
 opacity:.7;
 }
+
 .pipeline-active{
 background:linear-gradient(135deg,#0891b2,#2563eb);
 box-shadow:0 0 40px rgba(34,211,238,.5);
 transform:translateY(-4px);
 }
+
 .pipeline-complete{
 background:linear-gradient(135deg,#059669,#10b981);
 }
+
 .pipeline-skipped{
 background:linear-gradient(135deg,#ca8a04,#eab308);
 }
+
 .pulse{
 animation:pulse 1.5s infinite;
 }
+
 @keyframes pulse{
 0%{transform:scale(1);}
 50%{transform:scale(1.02);}
@@ -62,14 +70,14 @@ Enterprise ORM Intelligence Dashboard
 
 <div class="glass rounded-2xl p-4 mb-6 border border-cyan-500/20">
 <p class="text-cyan-300 text-sm">
-Quota Optimized Mode Enabled • Keyword-Based Search • Brand Detection via Title & Description Analysis
+Quota Optimized Mode Enabled • Brand + Keyword Intelligence
 </p>
 </div>
 
 <div class="grid md:grid-cols-4 gap-6 mb-8">
 
 <div class="glass rounded-3xl p-6">
-<p class="text-slate-400">Videos Scanned</p>
+<p class="text-slate-400">Unique Videos Scanned</p>
 <h2 id="videosCount" class="text-4xl font-bold mt-2">0</h2>
 </div>
 
@@ -93,7 +101,10 @@ Quota Optimized Mode Enabled • Keyword-Based Search • Brand Detection via Ti
 <div class="grid md:grid-cols-3 gap-6 mb-8">
 
 <div class="glass rounded-3xl p-6">
-<h2 class="text-2xl font-bold mb-4">API Configuration</h2>
+
+<h2 class="text-2xl font-bold mb-4">
+API Configuration
+</h2>
 
 <input
 id="apiKey"
@@ -115,7 +126,10 @@ class="w-full bg-black border border-slate-700 rounded-2xl p-4 mb-4"
 </div>
 
 <div class="glass rounded-3xl p-6">
-<h2 class="text-2xl font-bold mb-4">Brand Monitoring</h2>
+
+<h2 class="text-2xl font-bold mb-4">
+Brand Monitoring
+</h2>
 
 <textarea
 id="brands"
@@ -130,7 +144,10 @@ ICICI Direct</textarea>
 </div>
 
 <div class="glass rounded-3xl p-6">
-<h2 class="text-2xl font-bold mb-4">Fraud Keywords</h2>
+
+<h2 class="text-2xl font-bold mb-4">
+Fraud Keywords
+</h2>
 
 <textarea
 id="keywords"
@@ -140,9 +157,30 @@ class="w-full bg-black border border-slate-700 rounded-2xl p-4"
 trading tips
 buy call
 sell call
+intraday jackpot
+jackpot calls
 guaranteed returns
 assured returns
 100% profit
+sure shot calls
+premium group
+telegram
+whatsapp
+VIP group
+signals group
+join telegram
+DM me
+contact me
+free signals
+operator calls
+bank nifty calls
+nifty jackpot
+stock recommendation
+multibagger
+upper circuit
+inside news
+limited seats
+last chance
 </textarea>
 
 </div>
@@ -154,6 +192,7 @@ assured returns
 <div class="flex justify-between items-center mb-8">
 
 <div>
+
 <h2 class="text-5xl font-black mb-2">
 Detection Pipeline
 </h2>
@@ -165,6 +204,7 @@ Automated fraud detection workflow
 <p id="scanStatus" class="text-cyan-400 mt-3">
 Idle
 </p>
+
 </div>
 
 <button
@@ -214,13 +254,17 @@ class="bg-gradient-to-r from-cyan-400 to-purple-500 px-10 py-5 rounded-2xl text-
 
 <div class="flex gap-4 mb-6">
 
-<button onclick="exportCSV()"
-class="bg-emerald-500 px-8 py-4 rounded-2xl text-black font-bold">
+<button
+onclick="exportCSV()"
+class="bg-emerald-500 px-8 py-4 rounded-2xl text-black font-bold"
+>
 Export CSV
 </button>
 
-<button onclick="exportXLSX()"
-class="bg-yellow-500 px-8 py-4 rounded-2xl text-black font-bold">
+<button
+onclick="exportXLSX()"
+class="bg-yellow-500 px-8 py-4 rounded-2xl text-black font-bold"
+>
 Export XLSX
 </button>
 
@@ -228,17 +272,9 @@ Export XLSX
 
 <div class="glass rounded-3xl p-6">
 
-<div class="flex justify-between items-center mb-6 flex-wrap gap-4">
-
-<h2 class="text-3xl font-black">
+<h2 class="text-3xl font-black mb-6">
 Detected Videos
 </h2>
-
-<div class="flex gap-4 flex-wrap">
-
-</div>
-
-</div>
 
 <div class="overflow-x-auto">
 
@@ -333,6 +369,7 @@ document.getElementById(id).className =
 function getPublishedAfter(days){
 
 const date = new Date()
+
 date.setDate(date.getDate()-days)
 
 return date.toISOString()
@@ -489,13 +526,16 @@ async function startScan(){
 
 resetPipeline()
 
-const apiKey = document.getElementById('apiKey').value.trim()
+const apiKey =
+document.getElementById('apiKey').value.trim()
 
 if(!apiKey){
-alert('Please enter YouTube API key')
-return
-}
 
+alert('Please enter YouTube API key')
+
+return
+
+}
 
 const brands = document
 .getElementById('brands')
@@ -511,9 +551,11 @@ const keywords = document
 .map(k=>k.replaceAll('"','').trim())
 .filter(k=>k.length > 0)
 
-const duration = document.getElementById('duration').value
+const duration =
+document.getElementById('duration').value
 
-const resultsBody = document.getElementById('resultsBody')
+const resultsBody =
+document.getElementById('resultsBody')
 
 resultsBody.innerHTML = ''
 
@@ -534,9 +576,8 @@ for(const keyword of keywords){
 
 const query = `${brand} ${keyword}`
 
-
-
-const publishedAfter = getPublishedAfter(duration)
+const publishedAfter =
+getPublishedAfter(duration)
 
 const url =
 `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=10&publishedAfter=${publishedAfter}&order=date&key=${apiKey}`
@@ -551,11 +592,11 @@ if(data.error){
 
 alert(
 'YouTube API Error: ' +
-data.error.message +
-'\n\nMake sure:\n1. YouTube Data API v3 is enabled\n2. API key is valid\n3. API restrictions are removed'
+data.error.message
 )
 
 console.log(data)
+
 return
 
 }
@@ -564,9 +605,8 @@ if(data.items){
 
 for(const item of data.items){
 
-videosScanned++
-
-const title = item.snippet.title
+const title =
+item.snippet.title
 
 const description =
 item.snippet.description || ''
@@ -574,8 +614,11 @@ item.snippet.description || ''
 const combinedText =
 (title + ' ' + description).toLowerCase()
 
-const matchedBrands = brands.filter(b =>
-combinedText.includes(b.toLowerCase())
+const matchedBrands =
+brands.filter(b =>
+combinedText.includes(
+b.toLowerCase()
+)
 )
 
 const detectedBrand =
@@ -583,46 +626,60 @@ matchedBrands.length > 0
 ? matchedBrands.join(', ')
 : 'None'
 
-const phrases = detectPhrases(
+const phrases =
+detectPhrases(
 title + ' ' + description
 )
 
-const risk = detectRisk(phrases)
+const risk =
+detectRisk(phrases)
 
-
-if(
-risk === 'Critical' ||
-risk === 'High'
-){
-fraudDetected++
-}
-
-const details = await fetchVideoDetails(
+const details =
+await fetchVideoDetails(
 item.id.videoId,
 apiKey
 )
 
-const shorts = isShort(
+const shorts =
+isShort(
 title,
 details.duration
 )
 
-if(shorts){
-shortsDetected++
-}
-
 const result = {
+
 title,
-channel:item.snippet.channelTitle,
-brand: detectedBrand,
+
+channel:
+item.snippet.channelTitle,
+
+brand:
+detectedBrand,
+
 keyword,
-type:shorts ? 'YouTube Short' : 'Long Video',
+
+type:
+shorts
+? 'YouTube Short'
+: 'Long Video',
+
 risk,
-phrases:phrases.join(', '),
-views:formatViews(details.views),
-published:item.snippet.publishedAt,
-url:`https://youtube.com/watch?v=${item.id.videoId}`,
-thumbnail:item.snippet.thumbnails.medium.url
+
+phrases:
+phrases.join(', '),
+
+views:
+formatViews(details.views),
+
+published:
+item.snippet.publishedAt,
+
+url:
+`https://youtube.com/watch?v=${item.id.videoId}`,
+
+thumbnail:
+item.snippet.thumbnails.medium.url
+
 }
 
 const alreadyExists =
@@ -632,17 +689,34 @@ r => r.url === result.url
 
 if(!alreadyExists){
 
+videosScanned++
+
+if(
+risk === 'Critical' ||
+risk === 'High'
+){
+fraudDetected++
+}
+
+if(shorts){
+shortsDetected++
+}
+
 allResults.push(result)
-	
+
 resultsBody.innerHTML += `
 <tr class="border-b border-slate-800">
+
 <td class="p-4">
 <img src="${result.thumbnail}" class="w-36 rounded-xl"/>
 </td>
 
 <td class="p-4">${result.title}</td>
+
 <td class="p-4">${result.channel}</td>
+
 <td class="p-4">${result.brand}</td>
+
 <td class="p-4">${result.keyword}</td>
 
 <td class="p-4">
@@ -678,6 +752,8 @@ Open
 
 }
 
+}
+
 }catch(error){
 
 console.error(error)
@@ -686,7 +762,6 @@ console.error(error)
 
 }
 
-}
 }
 
 setStepComplete('step1')
@@ -728,7 +803,7 @@ setStepComplete('step5')
 if(allResults.length === 0){
 
 document.getElementById('scanStatus').innerText =
-'No videos found. Try Last 30 Days or broader keywords.'
+'No videos found. Try broader keywords.'
 
 }else{
 
@@ -751,8 +826,11 @@ shortsDetected
 function exportCSV(){
 
 if(allResults.length === 0){
+
 alert('No data')
+
 return
+
 }
 
 const rows = [
@@ -763,14 +841,22 @@ allResults.forEach(r=>{
 rows.push(Object.values(r).join(','))
 })
 
-const blob = new Blob([rows.join('\n')],{
+const blob = new Blob(
+[rows.join('\n')],
+{
 type:'text/csv'
-})
+}
+)
 
-const a = document.createElement('a')
+const a =
+document.createElement('a')
 
-a.href = URL.createObjectURL(blob)
-a.download = 'youtube-fraud-report.csv'
+a.href =
+URL.createObjectURL(blob)
+
+a.download =
+'youtube-fraud-report.csv'
+
 a.click()
 
 }
@@ -778,13 +864,18 @@ a.click()
 function exportXLSX(){
 
 if(allResults.length === 0){
+
 alert('No data')
+
 return
+
 }
 
-const worksheet = XLSX.utils.json_to_sheet(allResults)
+const worksheet =
+XLSX.utils.json_to_sheet(allResults)
 
-const workbook = XLSX.utils.book_new()
+const workbook =
+XLSX.utils.book_new()
 
 XLSX.utils.book_append_sheet(
 workbook,
